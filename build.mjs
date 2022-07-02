@@ -22,8 +22,9 @@ await $`npm run build`;
 await $`mv out/src ../../../dist`;
 cd("../../../");
 
+const date = await $`date '+%Y-%m-%d'`;
 packageJson.name = "@zzzen/pyright-internal";
-packageJson.version = "1.2.0-beta";
+packageJson.version = `1.2.0-dev.${date.stdout.trim()}`;
 packageJson.private = false;
 
 fs.writeFileSync("package.json", JSON.stringify(packageJson, undefined, 2));
