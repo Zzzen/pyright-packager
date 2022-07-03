@@ -24,6 +24,7 @@ cd("../../../");
 
 const date = await $`date '+%Y%m%d'`;
 packageJson.name = "@zzzen/pyright-internal";
+packageJson.repository = "github:Zzzen/pyright-packager"
 packageJson.version = `1.2.0-dev.${date.stdout.trim()}`;
 packageJson.private = false;
 
