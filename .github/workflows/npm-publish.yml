@@ -6,6 +6,7 @@ name: Node.js Package
 on:
   schedule:
     - cron: '0 5 * * 0'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -19,10 +20,9 @@ jobs:
           path: pyright
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
           registry-url: https://registry.npmjs.org/
-      - run: npm i -g zx
-      - run: zx build.mjs
+      - run: npx zx@7.2.3 build.mjs
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
