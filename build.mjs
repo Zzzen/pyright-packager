@@ -18,7 +18,7 @@ fs.writeFileSync(tsconfigPath, JSON.stringify(tsconfig, undefined, 2));
 
 cd("pyright");
 await $`npm ci`;
-cd("pyright/packages/pyright-internal");
+cd("./packages/pyright-internal");
 await $`npm ci`;
 await $`npm run build`;
 await $`mv out/src ../../../dist`;
