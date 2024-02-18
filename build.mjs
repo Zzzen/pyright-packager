@@ -16,7 +16,9 @@ tsconfig.compilerOptions = Object.assign(tsconfig.compilerOptions, {
 
 fs.writeFileSync(tsconfigPath, JSON.stringify(tsconfig, undefined, 2));
 
-cd("pyright/packages/pyright-internal");
+cd("pyright");
+await $`npm ci`;
+cd("./packages/pyright-internal");
 await $`npm ci`;
 await $`npm run build`;
 await $`mv out/src ../../../dist`;
