@@ -21,7 +21,7 @@ await $`npm ci`;
 cd("./packages/pyright-internal");
 await $`npm ci`;
 await $`npm run build`;
-await $`mv out/src ../../../dist`;
+await $`mv out/packages/pyright-internal/src ../../../dist`;
 cd("../../../");
 
 const date = await $`date '+%Y%m%d'`;
