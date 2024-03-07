@@ -22,7 +22,10 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
-      - run: npx zx@7.2.3 build.mjs
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: "1.41.1"
+      - run: deno run -A build.mjs
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
