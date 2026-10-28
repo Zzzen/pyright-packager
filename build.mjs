@@ -18,10 +18,10 @@ tsconfig.compilerOptions = Object.assign(tsconfig.compilerOptions, {
 fs.writeFileSync(tsconfigPath, JSON.stringify(tsconfig, undefined, 2));
 
 cd("pyright");
-await $`npm install`;
+await $`node build/installPinnedPackageManager.js`;
+await $`pnpm install --frozen-lockfile`;
 cd("./packages/pyright-internal");
-await $`npm install`;
-await $`npm run build`;
+await $`pnpm run build`;
 await $`mv out/packages/pyright-internal/src ../../../dist`;
 cd("../../../");
 
